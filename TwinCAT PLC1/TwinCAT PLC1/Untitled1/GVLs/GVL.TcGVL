@@ -3,10 +3,14 @@
   <GVL Name="GVL" Id="{c060a810-e345-43ad-84e2-8456f7310124}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	// Bouton
+	// Bouton appelle ascenseur etage
 	BP_EG : BOOL := FALSE;
 	BP_1OG : BOOL := FALSE;
-	BP_2OG : bool := false;
+	BP_2OG : BOOL := FALSE;
+	
+	iEtageAppel : INT;
+	iEtageActuel : INT; 
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

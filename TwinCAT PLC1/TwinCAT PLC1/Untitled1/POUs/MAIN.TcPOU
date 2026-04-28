@@ -1,13 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{3f45254e-648f-4ffc-a0fd-e9e2d67bcb4f}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="MAIN" Id="{3f45254e-648f-4ffc-a0fd-e9e2d67bcb4f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+    rTrig_BP_EG  : R_TRIG;
+    rTrig_BP_1OG : R_TRIG;
+    rTrig_BP_2OG : R_TRIG;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[rTrig_BP_EG(CLK := GVL.BP_EG);
+rTrig_BP_1OG(CLK := GVL.BP_1OG);
+rTrig_BP_2OG(CLK := GVL.BP_2OG);
+
+// Appelle bouton etage
+IF rTrig_BP_EG.Q THEN
+	GVL.iEtageAppel := 0;
+END_IF
+
+IF rTrig_BP_1OG.Q THEN
+	GVL.iEtageAppel := 1;
+END_IF
+
+IF rTrig_BP_2OG.Q THEN
+	GVL.iEtageAppel := 2;
+END_IF]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="23" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="28" Count="3" />
+      <LineId Id="33" Count="3" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
