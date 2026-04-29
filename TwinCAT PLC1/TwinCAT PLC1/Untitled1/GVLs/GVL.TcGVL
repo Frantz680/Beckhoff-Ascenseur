@@ -11,6 +11,9 @@ VAR_GLOBAL
 	iEtageAppel : INT;
 	iEtageActuel : INT; 
 	
+	MouvementAscenseur : BOOL := FALSE;
+	iTempsMouvementAscenseur : INT;
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
