@@ -31,6 +31,10 @@ END_IF
 
 // Durée du trajet
 IF gvl.MouvementAscenseur THEN
+	// Lampe témoin chaque étage
+	gvl.Lampe_EG := FALSE;
+	gvl.Lampe_1OG := FALSE;
+	gvl.Lampe_2OG := false;
 	
 	// Calcul du temps
 	CASE ABS(GVL.iEtageAppel - GVL.iEtageActuel) OF
@@ -48,9 +52,17 @@ IF gvl.MouvementAscenseur THEN
         GVL.TempsMouvementAscenseur(IN := FALSE);
 		
 		CASE GVL.iEtageActuel OF
-			0: gvl.BP_EG := FALSE;
-			1 : gvl.BP_1OG :=  FALSE;
-			2 : gvl.BP_2OG := FALSE;
+			0:
+				GVL.BP_EG := FALSE;
+				GVL.Lampe_EG := TRUE;
+		
+			1:
+				GVL.BP_1OG := FALSE;
+				GVL.Lampe_1OG := TRUE;
+		
+			2:
+				GVL.BP_2OG := FALSE;
+				GVL.Lampe_2OG := TRUE;
 		END_CASE
     END_IF
 END_IF
@@ -72,6 +84,8 @@ END_IF
       <LineId Id="68" Count="0" />
       <LineId Id="51" Count="0" />
       <LineId Id="50" Count="0" />
+      <LineId Id="119" Count="2" />
+      <LineId Id="117" Count="0" />
       <LineId Id="81" Count="1" />
       <LineId Id="54" Count="4" />
       <LineId Id="71" Count="0" />
@@ -79,8 +93,9 @@ END_IF
       <LineId Id="75" Count="0" />
       <LineId Id="83" Count="0" />
       <LineId Id="77" Count="3" />
-      <LineId Id="90" Count="2" />
-      <LineId Id="94" Count="1" />
+      <LineId Id="90" Count="1" />
+      <LineId Id="102" Count="9" />
+      <LineId Id="101" Count="0" />
       <LineId Id="93" Count="0" />
       <LineId Id="76" Count="0" />
       <LineId Id="53" Count="0" />

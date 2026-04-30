@@ -8,6 +8,11 @@ VAR_GLOBAL
 	BP_1OG : BOOL := FALSE;
 	BP_2OG : BOOL := FALSE;
 	
+	// Lampe 
+	Lampe_EG : BOOL := FALSE;
+	Lampe_1OG : BOOL := FALSE;
+	Lampe_2OG : BOOL := FALSE;
+	
 	iEtageAppel : INT;
 	iEtageActuel : INT; 
 	
