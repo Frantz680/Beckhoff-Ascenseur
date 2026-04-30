@@ -12,7 +12,7 @@ VAR_GLOBAL
 	iEtageActuel : INT; 
 	
 	MouvementAscenseur : BOOL := FALSE;
-	iTempsMouvementAscenseur : INT;
+	TempsMouvementAscenseur : TON;
 	
 END_VAR]]></Declaration>
   </GVL>

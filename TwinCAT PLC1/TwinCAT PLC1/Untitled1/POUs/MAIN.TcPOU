@@ -29,15 +29,33 @@ IF rTrig_BP_2OG.Q THEN
 	gvl.MouvementAscenseur := TRUE;
 END_IF
 
+// Durée du trajet
 IF gvl.MouvementAscenseur THEN
+	
+	// Calcul du temps
 	CASE ABS(GVL.iEtageAppel - GVL.iEtageActuel) OF
 
-        0: GVL.iTempsMouvementAscenseur := 0;
-        1: GVL.iTempsMouvementAscenseur := 5;
-        2: GVL.iTempsMouvementAscenseur := 10;
-
+        0: GVL.TempsMouvementAscenseur (IN := TRUE, PT := T#0S);
+        1: GVL.TempsMouvementAscenseur (IN := TRUE, PT := T#5S);
+        2: GVL.TempsMouvementAscenseur (IN := TRUE, PT := T#10S);
+		
     END_CASE
-END_IF]]></ST>
+	
+	// Arrivé a l'étage demandé
+	IF GVL.TempsMouvementAscenseur.Q THEN
+        GVL.iEtageActuel := GVL.iEtageAppel;
+        gvl.MouvementAscenseur := FALSE;
+        GVL.TempsMouvementAscenseur(IN := FALSE);
+		
+		CASE GVL.iEtageActuel OF
+			0: gvl.BP_EG := FALSE;
+			1 : gvl.BP_1OG :=  FALSE;
+			2 : gvl.BP_2OG := FALSE;
+		END_CASE
+    END_IF
+END_IF
+
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="23" Count="1" />
@@ -51,10 +69,23 @@ END_IF]]></ST>
       <LineId Id="33" Count="3" />
       <LineId Id="49" Count="0" />
       <LineId Id="17" Count="0" />
+      <LineId Id="68" Count="0" />
       <LineId Id="51" Count="0" />
       <LineId Id="50" Count="0" />
-      <LineId Id="54" Count="5" />
-      <LineId Id="52" Count="1" />
+      <LineId Id="81" Count="1" />
+      <LineId Id="54" Count="4" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="77" Count="3" />
+      <LineId Id="90" Count="2" />
+      <LineId Id="94" Count="1" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="69" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
