@@ -3,31 +3,57 @@
   <POU Name="MAIN" Id="{3f45254e-648f-4ffc-a0fd-e9e2d67bcb4f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-    rTrig_BP_EG  : R_TRIG;
-    rTrig_BP_1OG : R_TRIG;
-    rTrig_BP_2OG : R_TRIG;
+    //rTrig_BP_EG  : R_TRIG;
+    //rTrig_BP_1OG : R_TRIG;
+    //rTrig_BP_2OG : R_TRIG;
+	
+	Appel_EG  : FB_AppelEtage;
+    Appel_1OG : FB_AppelEtage;
+    Appel_2OG : FB_AppelEtage;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[rTrig_BP_EG(CLK := GVL.BP_EG);
-rTrig_BP_1OG(CLK := GVL.BP_1OG);
-rTrig_BP_2OG(CLK := GVL.BP_2OG);
+      <ST><![CDATA[//rTrig_BP_EG(CLK := GVL.BP_EG);
+//rTrig_BP_1OG(CLK := GVL.BP_1OG);
+//rTrig_BP_2OG(CLK := GVL.BP_2OG);
+Appel_EG(bBouton := GVL.BP_EG, iEtage := 0);
+Appel_1OG(bBouton := GVL.BP_1OG, iEtage := 1);
+Appel_2OG(bBouton := GVL.BP_2OG, iEtage := 2);
 
-// Appelle bouton etage
-IF rTrig_BP_EG.Q THEN
-	GVL.iEtageAppel := 0;
-	gvl.MouvementAscenseur := TRUE;
+// Appel bouton etage
+//IF rTrig_BP_EG.Q THEN
+//	GVL.iEtageAppel := 0;
+//	gvl.MouvementAscenseur := TRUE;
+//END_IF
+
+//IF rTrig_BP_1OG.Q THEN
+//	GVL.iEtageAppel := 1;
+//	gvl.MouvementAscenseur := TRUE;
+//END_IF
+
+//IF rTrig_BP_2OG.Q THEN
+//	GVL.iEtageAppel := 2;
+//	gvl.MouvementAscenseur := TRUE;
+//END_IF
+
+IF Appel_EG.bDemande THEN
+    GVL.iEtageAppel := Appel_EG.iEtageDemande;
+    GVL.MouvementAscenseur := TRUE;
 END_IF
 
-IF rTrig_BP_1OG.Q THEN
-	GVL.iEtageAppel := 1;
-	gvl.MouvementAscenseur := TRUE;
+IF Appel_1OG.bDemande THEN
+    GVL.iEtageAppel := Appel_1OG.iEtageDemande;
+    GVL.MouvementAscenseur := TRUE;
 END_IF
 
-IF rTrig_BP_2OG.Q THEN
-	GVL.iEtageAppel := 2;
-	gvl.MouvementAscenseur := TRUE;
+IF Appel_2OG.bDemande THEN
+    GVL.iEtageAppel := Appel_2OG.iEtageDemande;
+    GVL.MouvementAscenseur := TRUE;
 END_IF
+
+
+
+
 
 // Fermeture porte
 IF gvl.MouvementAscenseur THEN
@@ -91,14 +117,18 @@ END_IF
     <LineIds Name="MAIN">
       <LineId Id="23" Count="1" />
       <LineId Id="2" Count="0" />
+      <LineId Id="173" Count="1" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="157" Count="12" />
       <LineId Id="38" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="177" Count="12" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="171" Count="0" />
       <LineId Id="10" Count="0" />
-      <LineId Id="25" Count="1" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="28" Count="3" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="33" Count="3" />
-      <LineId Id="49" Count="0" />
+      <LineId Id="154" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="128" Count="0" />

@@ -4,21 +4,33 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_AppelEtage
 
 VAR_INPUT
-	
+	bBouton : BOOL;
+    iEtage  : INT;
 END_VAR
 
 VAR_OUTPUT
-	
+	bDemande : BOOL;
+    iEtageDemande : INT;
 END_VAR
 
 VAR
-	
+	rTrig : R_TRIG;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// Détection front
+rTrig(CLK := bBouton);
+
+IF rTrig.Q THEN
+    bDemande := TRUE;
+    iEtageDemande := iEtage;
+ELSE
+    bDemande := FALSE;
+END_IF;]]></ST>
     </Implementation>
     <LineIds Name="FB_AppelEtage">
+      <LineId Id="19" Count="1" />
+      <LineId Id="22" Count="5" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
