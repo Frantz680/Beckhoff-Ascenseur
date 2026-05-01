@@ -19,6 +19,14 @@ VAR_GLOBAL
 	MouvementAscenseur : BOOL := FALSE;
 	TempsMouvementAscenseur : TON;
 	
+	// Ouverture Porte
+	OuverturePorte : Ton;
+	Lampe_Ouverture : BOOL := FALSE;
+	
+	// Fermeture Porte
+	FermeturePorte : Ton;
+	Lampe_Fermeture : Bool := False;
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
