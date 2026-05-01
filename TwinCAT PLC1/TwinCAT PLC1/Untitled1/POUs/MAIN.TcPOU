@@ -75,7 +75,7 @@ IF gvl.FermeturePorte.Q THEN
 				GVL.Lampe_2OG := TRUE;
 		END_CASE
 		
-		gvl.Lampe_Fermeture := false;
+		gvl.Lampe_Fermeture := FALSE;
 		
 		// Ouverture porte
 		gvl.OuverturePorte (In := TRUE, PT :=  T#5S);
